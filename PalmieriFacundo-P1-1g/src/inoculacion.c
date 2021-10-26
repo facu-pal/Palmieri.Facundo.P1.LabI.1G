@@ -98,7 +98,7 @@ int mostrarInoculaciones(eInoculacion Inoculacion[], int tam) {
 			printf(
 					"------------------------------------------------------------\n");
 			printf(
-					" ID    idPaciente       idVacuna    fecha       idProvincia \n");
+					" ID    idPaciente       idVacuna    fecha       \n");
 			printf(
 					"------------------------------------------------------------\n");
 			for (int i = 0; i < tam; i++) {

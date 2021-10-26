@@ -145,7 +145,7 @@ int mostrarPacientes(ePaciente lista[], int tam, eProvincia provincia[],int tamP
 
 		todoOk = 1;
 	}
-	system("pause");
+	//system("pause");
 
 	return todoOk;
 }
