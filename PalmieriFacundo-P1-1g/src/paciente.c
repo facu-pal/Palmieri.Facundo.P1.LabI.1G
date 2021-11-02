@@ -20,12 +20,11 @@ int menu() {
 	printf("7- Listar vacuna\n");
 	printf("8- Alta inoculacion\n");
 	printf("9- listar inoculacion\n");
-	printf("10- Salir\n");
+	printf("10- Informes\n");
+	printf("11- Salir\n");
 	printf("Ingrese opcion: ");
 	fflush(stdin);
 	scanf("%d", &opcion);
-	return opcion;
-
 	return opcion;
 }
 
@@ -193,15 +192,15 @@ int modificarPaciente(ePaciente paciente[], int tam, eProvincia provincia[],int 
 
 				case 1:
 					mostrarProvincia(provincia, tamProv);
-					printf("Modificar id localidad: ");
+					printf("Modificar id provincia: ");
 					scanf("%d", &auxPaciente.idProvincia);
 
 					while (!validarIdProvincia(auxPaciente.idProvincia,provincia, tamProv)) {
-						printf("Error, ingrese id de localidad valido: ");
+						printf("Error, ingrese id de provincia valido: ");
 						scanf("%d", &auxPaciente.idProvincia);
 					}
 
-					printf("Confirma cambio de id localidad? (S/N)\n");
+					printf("Confirma cambio de id provincia? (S/N)\n");
 					fflush(stdin);
 					scanf("%c", &confirma);
 					confirma = toupper(confirma);
@@ -338,7 +337,7 @@ int validarIdPaciente( int id, ePaciente paciente[], int tamPac )
     {
         for (int i = 0; i < tamPac; i++)
         {
-            if (id == paciente[i].id)
+            if (id == paciente[i].id && paciente[i].isEmpty == 0)
             {
                 esValido = 1;
                 break;
@@ -348,4 +347,23 @@ int validarIdPaciente( int id, ePaciente paciente[], int tamPac )
     return esValido;
 }
 
+int cargarDescPaciente(ePaciente paciente[], int tamPac, int idPaciente, char descPaciente[]) {
+	int retorno = 0;
+	int flag = 1;
 
+	if (paciente != NULL && tamPac > 0 && descPaciente != NULL) {
+		retorno = 1;
+		for (int i = 0; i < tamPac; i++) {
+			if (paciente[i].id == idPaciente) {
+				strcpy(descPaciente, paciente[i].nombre);
+				flag = 0;
+				break;
+			}
+		}
+		if (flag) {
+			retorno = -1; // no habia localidad con el id que le pasaron
+		}
+	}
+
+	return retorno;
+}

@@ -42,3 +42,44 @@ int validarIdVacuna( int id, eVacuna vacuna[], int tamVac ){
 
 
 }
+
+int cargarDescVacuna(eVacuna vacuna[], int tamVac, int idVacuna, char descVacuna[]) {
+	int retorno = 0;
+	int flag = 1;
+
+	if (vacuna != NULL && tamVac > 0 && descVacuna != NULL) {
+		retorno = 1;
+		for (int i = 0; i < tamVac; i++) {
+			if (vacuna[i].id == idVacuna) {
+				strcpy(descVacuna, vacuna[i].nombre);
+				flag = 0;
+				break;
+			}
+		}
+		if (flag) {
+			retorno = -1; // no habia localidad con el id que le pasaron
+		}
+	}
+
+	return retorno;
+}
+int cargarPrecio(eVacuna vacuna[], int tamVac, int idVacuna, float *precio) {
+	int retorno = 0;
+	int flag = 1;
+
+	if (vacuna != NULL && tamVac > 0) {
+		retorno = 1;
+		for (int i = 0; i < tamVac; i++) {
+			if (vacuna[i].id == idVacuna) {
+				*precio = vacuna[i].precio;
+				flag = 0;
+				break;
+			}
+		}
+		if (flag) {
+			retorno = -1; // no habia localidad con el id que le pasaron
+		}
+	}
+
+	return retorno;
+}

@@ -47,7 +47,7 @@ int altaInoculacion(eInoculacion Inoculacion[], int tam, ePaciente paciente[],in
 				mostrarPacientes(paciente, tamPac, pronvicia, tamProv);
 				utn_getNumero(&auxInoculacion.idPaciente, "Ingrese la id del paciente:","Error.Ingrese la id del paciente:", 0, 100000, 3);
 				while (!validarIdPaciente(auxInoculacion.idPaciente, paciente,tamPac)) {
-				utn_getNumero(&auxInoculacion.idPaciente, "Ingrese la id del paciente:","Error.Ingrese la id del paciente:", 0, 100000, 3);
+				utn_getNumero(&auxInoculacion.idPaciente, "Se id no existe.Ingrese la id del paciente:","Error.Ingrese la id del paciente:", 0, 100000, 3);
 				}
 
 				mostrarVacuna(vacuna, tamVac, laboratorio, tamLab);
@@ -83,34 +83,34 @@ int altaInoculacion(eInoculacion Inoculacion[], int tam, ePaciente paciente[],in
 
 }
 
-void mostrarInoculacion(eInoculacion inoculacion){
+void mostrarInoculacion(eInoculacion inoculacion,ePaciente paciente[], int tamPac, eVacuna vacuna[], int tamVac){
+	char descPaci[20];
+	char descVac[20];
 
-	printf(" %d       %d       %d         %d/%d/%d            \n", inoculacion.id,inoculacion.idPaciente,inoculacion.idVacuna,inoculacion.fecha.dia,inoculacion.fecha.mes,inoculacion.fecha.anio);
-
+	if((cargarDescPaciente(paciente, tamPac, inoculacion.idPaciente, descPaci)==1) && (cargarDescVacuna(vacuna, tamVac, inoculacion.idVacuna, descVac)==1)){
+	printf(" %d       %-10s       %-10s         %d/%d/%d            \n", inoculacion.id,descPaci,descVac,inoculacion.fecha.dia,inoculacion.fecha.mes,inoculacion.fecha.anio);
+	}
 
 }
-int mostrarInoculaciones(eInoculacion Inoculacion[], int tam) {
+int mostrarInoculaciones(eInoculacion Inoculacion[], int tam,ePaciente paciente[], int tamPac, eVacuna vacuna[], int tamVac) {
 	int todoOk = 0;
 		int flag = 1;
 
-		if (Inoculacion != NULL && tam > 0 ) {
+		if (Inoculacion != NULL && tam > 0 && paciente != NULL && tamPac > 0 &&vacuna != NULL && tamVac > 0) {
 			printf("                     ***Lista de inoculacion  ***\n");
-			printf(
-					"------------------------------------------------------------\n");
-			printf(
-					" ID    idPaciente       idVacuna    fecha       \n");
-			printf(
-					"------------------------------------------------------------\n");
+			printf("----------------------------------------------------------------\n");
+			printf(" ID    idPaciente       idVacuna                      fecha\n");
+			printf("----------------------------------------------------------------\n");
 			for (int i = 0; i < tam; i++) {
 
 				if (!Inoculacion[i].isEmpty) {
 
-					mostrarInoculacion(Inoculacion[i]);
+					mostrarInoculacion(Inoculacion[i],paciente,tamPac,vacuna,tamVac);
 					flag = 0;
 				}
 			}
 			if (flag) {
-				printf("No hay personas para mostrar.\n");
+				printf("No hay inoculaciones para mostrar.\n");
 			}
 
 			todoOk = 1;

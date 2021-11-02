@@ -24,6 +24,5 @@ int inicializarInoculacion(eInoculacion inoculacion[], int tam);
 int buscarLibreIno(eInoculacion inoculacion[], int tam);
 
 int altaInoculacion(eInoculacion Inoculacion[], int tam, ePaciente paciente[],int tamPac,eVacuna vacuna[],int tamVac,eProvincia pronvicia[], int tamProv,eLaboratorio laboratorio[], int tamLab,int *pNextId);
-void mostrarInoculacion(eInoculacion inoculacion);
-
-int mostrarInoculaciones(eInoculacion Inoculacion[], int tam) ;
+void mostrarInoculacion(eInoculacion inoculacion,ePaciente paciente[], int tamPac, eVacuna vacuna[], int tamVac);
+int mostrarInoculaciones(eInoculacion Inoculacion[], int tam,ePaciente paciente[], int tamPac, eVacuna vacuna[], int tamVac) ;

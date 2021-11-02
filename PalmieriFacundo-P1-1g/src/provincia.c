@@ -42,8 +42,8 @@ int mostrarProvincia(eProvincia provincia[],int tamProv){
 	    }
 
 	    return todoOk;
-
 }
+
 int validarIdProvincia( int id, eProvincia provincia[], int tamProv )
 {
     int esValido = 0;
@@ -60,3 +60,4 @@ int validarIdProvincia( int id, eProvincia provincia[], int tamProv )
     }
     return esValido;
 }
+

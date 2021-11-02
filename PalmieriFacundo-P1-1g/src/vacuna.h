@@ -15,3 +15,5 @@ typedef struct
 #endif /* VACUNA_H_ */
 int mostrarVacuna(eVacuna vacuna[],int tamVac,eLaboratorio labo[], int tamLav);
 int validarIdVacuna( int id, eVacuna vacuna[], int tamVac );
+int cargarDescVacuna(eVacuna vacuna[], int tamVac, int idVacuna, char descVacuna[]);
+int cargarPrecio(eVacuna vacuna[], int tamVac, int idVacuna, float *precio) ;

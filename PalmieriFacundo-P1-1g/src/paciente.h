@@ -27,3 +27,4 @@ int menuModificacion();
 int bajaPaciente(ePaciente paciente[], int tam, eProvincia provincia[], int tamProv);
 int ordenarPacientes(ePaciente pacientes[], int tam,eProvincia provincias[],int tamProv) ;
 int validarIdPaciente( int id, ePaciente paciente[], int tamPac );
+int cargarDescPaciente(ePaciente paciente[], int tamPac, int idPaciente, char descPaciente[]) ;
